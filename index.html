@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Intrasight — Strategic Advisory</title>
+  <meta name="description"
+    content="Intrasight provides objective, independent, and respectful strategic advisory for leaders and owners." />
+  <meta name="theme-color" content="#1d63cc">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Intrasight — Strategic Advisory">
+  <meta property="og:description"
+    content="Objective, independent, and respectful strategic advisory for leaders and owners.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/og-image.jpg">
+  <meta property="og:locale" content="sk_SK">
+
+  <!-- SEO -->
+  <link rel="canonical" href="https://intrasight.com/">
+  <link rel="alternate" href="https://intrasight.com/" hreflang="sk">
+  <link rel="alternate" href="https://intrasight.com/en" hreflang="en">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ----------------------------------
+       Design tokens & font stacks
+    ---------------------------------- */
+    :root {
+      --bg: #fcf7f2;
+      --text: #000000;
+      --brand: #272f6c;
+      --accent: #aa91bc;
+      --maxw: 1000px;
+
+      --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+        "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+      --font-head: "Instrument Serif", Georgia, "Times New Roman", Times, serif;
+      --header-h: 64px;
+      /* fallback height; JS will keep it exact */
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    @supports (font-variation-settings: normal) {
+      body {
+        font-variation-settings: "wdth" 100;
+      }
+    }
+
+    /* Typography */
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--font-head);
+      font-weight: 400;
+      /* Instrument Serif ships at 400 */
+      font-style: normal;
+    }
+
+    .slogan {
+      font-family: var(--font-head);
+      font-style: italic;
+      color: var(--accent);
+      font-size: clamp(16px, 2vw, 20px);
+      margin: 4px 0 0;
+    }
+
+    .slogan-two {
+      font-family: var(--font-head);
+      font-style: italic;
+      color: var(--accent);
+      font-size: clamp(28px, 3.8vw, 40px);
+      line-height: 1.25;
+    }
+
+    nav a,
+    .lang-btn {
+      font-family: var(--font-body);
+      font-weight: 600;
+      /* crisp with IBM Plex Sans */
+    }
+
+    strong,
+    b {
+      font-family: var(--font-body);
+      font-weight: 600;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-optical-sizing: auto;
+      /* enable variable optical sizing */
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Skip link */
+    .skip {
+      position: absolute;
+      left: -9999px;
+      text-decoration: none;
+      top: auto;
+    }
+
+    .skip:focus {
+      left: 16px;
+      top: 16px;
+      background: none;
+      color: var(--bg);
+      text-decoration: none;
+      padding: 8px 12px;
+      z-index: 100;
+    }
+
+    /* Layout */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: var(--brand);
+    }
+
+    main {
+      padding-top: var(--header-h);
+    }
+
+    main section {
+      padding: 32px 0;
+      scroll-margin-top: calc(var(--header-h) + 10px);
+    }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 10px 0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .logo {
+      height: 2.3em;
+      width: auto;
+      border-radius: 0;
+      display: inline-block;
+      object-fit: contain;
+      background: none;
+      vertical-align: middle;
+    }
+
+    .brand-name {
+      color: whitesmoke;
+      font-size: 1.35em;
+      text-decoration: none;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 14px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: whitesmoke;
+      padding: 8px 12px;
+    }
+
+    nav a:hover,
+    nav a[aria-current="true"] {
+      color: var(--accent);
+    }
+
+    .lang-switch {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .lang-btn {
+      border: none;
+      background: none;
+      color: whitesmoke;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: clamp(0.85em, 1vw, 1.1em);
+    }
+
+    .lang-btn:hover,
+    .lang-btn[aria-pressed="true"] {
+      color: var(--accent);
+    }
+
+    /* Focus states */
+    a,
+    .lang-btn {
+      outline: none;
+    }
+
+    a:focus-visible,
+    .lang-btn:focus-visible {
+      outline: 3px solid rgba(255, 255, 255, .8);
+      outline-offset: 2px;
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      margin: 0 0 10px;
+    }
+
+    h2 {
+      font-size: clamp(22px, 3vw, 30px);
+      margin: 0 0 14px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 1fr;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (max-width: 820px) {
+      .grid.two {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .span-all {
+      grid-column: 1 / -1;
+    }
+
+    .card {
+      padding: 20px;
+      width: 100%;
+    }
+
+    .card .muted,
+    .muted {
+      color: var(--accent);
+    }
+
+    .card p {
+      max-width: none;
+    }
+
+    ul.clean,
+    ol.clean {
+      margin: 8px 0 0 0;
+      padding-left: 18px;
+    }
+
+    footer {
+      padding: 40px 0 60px;
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    /* Language visibility */
+    [data-lang="en"] .sk {
+      display: none !important;
+    }
+
+    [data-lang="sk"] .en {
+      display: none !important;
+    }
+
+    /* Small details */
+    .tag {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: .3px;
+      background: rgba(110, 231, 183, .12);
+      border: 1px solid rgba(110, 231, 183, .35);
+      color: #b7f7db;
+      font-weight: 700;
+    }
+
+    .lead {
+      font-size: clamp(16px, 2.1vw, 20px);
+    }
+
+    /* Motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* About image */
+    .about-photo {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 820px) {
+      .about-photo {
+        justify-content: center;
+      }
+    }
+
+    .about-photo img {
+      width: min(100%, 300px);
+      height: auto;
+      border-radius: 12px;
+      display: block;
+    }
+
+    /* Contact */
+    #contact .contact-card {
+      background: var(--accent);
+      color: var(--bg);
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+    }
+
+    #contact .contact-card a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+      text-underline-offset: 3px;
+    }
+
+    #contact .contact-headline {
+      font-family: var(--font-head);
+      font-weight: 400;
+      /* background removed so card color shows */
+      background: transparent;
+      color: inherit;
+      font-size: clamp(20px, 3.2vw, 38px);
+      line-height: 1.25;
+      margin: 0;
+    }
+
+    .logo-title {
+      margin-block-start: 0.8em;
+      line-height: 0;
+    }
+
+    .logo-title img {
+      display: block;
+      height: clamp(60px, 20vw, 80px);
+      width: auto;
+      max-width: 100%;
+    }
+
+
+    /* debug
+    .wrap {
+      outline: 2px dashed rgb(255, 0, 0)
+    }
+
+    .grid.two {
+      outline: 2px dashed rgb(0, 17, 255)
+    }*/
+  </style>
+
+  <!-- Structured data (adjust URLs if needed) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Intrasight",
+    "url":"https://intrasight.com",
+    "logo":"https://intrasight.com/logo.png",
+    "contactPoint":[{"@type":"ContactPoint","email":"info@intrasight.com","contactType":"sales"}]
+  }
+  </script>
+</head>
+
+<body data-lang="sk">
+  <a href="#main" class="skip">Skip to content</a>
+  <div id="top"></div>
+
+  <header>
+    <div class="wrap nav">
+      <a href="#top" class="brand" aria-label="Intrasight — Home">
+        <img class="logo" src="intrasight-logo-white.svg" alt="Intrasight" height="28">
+      </a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#about" class="sk">O mne</a><a href="#about" class="en">About</a></li>
+          <li><a href="#services" class="sk">Služby</a><a href="#services" class="en">Services</a></li>
+          <li><a href="#how" class="sk">Ako pracujem</a><a href="#how" class="en">How I Work</a></li>
+          <li><a href="#leadership" class="sk">Leadership</a><a href="#leadership" class="en">Leadership</a></li>
+          <li><a href="#ethics" class="sk">Etika</a><a href="#ethics" class="en">Ethics</a></li>
+          <li><a href="#contact" class="sk">Kontakt</a><a href="#contact" class="en">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn" data-set-lang="sk" aria-pressed="true">SK</button>
+        <button class="lang-btn" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="wrap" aria-labelledby="home-title">
+      <div class="grid two">
+        <div class="card">
+          <h1 id="home-title" class="logo-title">
+            <img src="intrasight-logo-blue.svg" alt="Intrasight">
+          </h1>
+          <p class="slogan-two sk">Zrkadlo, ktoré neklame <br> a pomáha konať</p>
+          <p class="slogan-two en">The mirror that speaks truth <br> with respect and clarity</p>
+        </div>
+        <div class="card">
+          <p class="lead sk">Zvýšte výkonnosť svojej firmy. Objektívne, nezávisle a s rešpektom.</p>
+          <p class="sk">Intrasight ponúka strategické poradenstvo z pohľadu, ktorý sa nedá outsourcovať: z pozície
+            lídra, ktorý viedol firmy, ľudí aj zmeny naprieč kontinentmi a modelmi vlastníctva. Nepredávame teórie.
+            Poskytujeme pravdivé zrkadlo výkonnosti, ktoré pomáha konať.</p>
+          <p class="lead en">Improve your company’s performance. Objectively, independently, and with respect.</p>
+          <p class="en">Intrasight offers strategic advisory from a perspective you can’t outsource, that of a leader
+            who’s led businesses, teams, and change across continents and ownership models. We don’t sell theory. We
+            deliver a mirror that reflects what matters and drives action.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="about" aria-labelledby="about-title">
+      <div class="grid two">
+        <div class="card">
+          <h2 id="about-title" class="sk">O mne</h2>
+          <h2 class="en">About Me</h2>
+          <!-- Text (left) -->
+          <div>
+            <p class="sk">Moje meno je Patrik Vančík a som viacnásobný CEO a člen boardov, s 20+ rokmi skúseností z
+              investičného a transformačného prostredia. Viedol som firmy v Európe, Ázii aj GCC regióne, od výroby po
+              distribúciu, od startupov po private equity holdingy. Môj prístup vychádza z toho, čo funguje v praxi, nie
+              len v prezentáciách. Som bývalý člen YPO Slovenská kapitola, kde som mal možnosť vymieňať si poznatky s
+              top lídrami z celého sveta.</p>
+            <p class="en">My name is Patrik Vancik and I am multi time CEO and board member with over 20 years of
+              experience in investment and transformation leadership. I’ve led businesses across Europe, Asia, and the
+              GCC, from manufacturing to distribution, from founder led firms to PE holdings. My approach is built on
+              what works in reality, not just in reports. I am a former member of YPO Slovak Chapter, which gave me the
+              opportunity to learn from some of the world’s top leaders.</p>
+          </div>
+
+        </div>
+        <div class="card"><!-- Image (right) -->
+          <div class="about-photo">
+            <img src="placeholder.jpg" alt="Portrait of Patrik Vančík" width="300" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="services" aria-labelledby="services-title">
+      <div class="grid two">
+        <div class="card span-all">
+          <h2 id="services-title" class="sk">Služby</h2>
+          <h2 class="en">Services</h2>
+          <div class="grid two">
+            <div>
+              <ul class="clean sk">
+                <li>Strategická diagnostika</li>
+                <li>Hodnotenie výkonnosti top manažmentu</li>
+                <li>Redizajn a posúdenie obchodného modelu</li>
+                <li>Interim alebo externý strategický leadership</li>
+                <li>Poradenstvo pri predaji, nástupníctve a zmene vlastníctva</li>
+              </ul>
+            </div>
+            <div>
+              <ul class="clean en">
+                <li>Strategic diagnostics</li>
+                <li>Executive team performance assessment</li>
+                <li>Business model evaluation and redesign</li>
+                <li>Interim or external strategic leadership</li>
+                <li>Advisory in ownership transition and succession</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="how" aria-labelledby="how-title">
+      <div class="grid two">
+        <div class="card span-all">
+          <h2 id="how-title" class="sk">Ako pracujem</h2>
+          <h2 class="en">How I Work</h2>
+          <div class="sk">
+            <ol class="clean">
+              <li>Úvodná diskusia o cieľoch vlastníka</li>
+              <li>Diagnostika výkonnosti, stratégie a rizík</li>
+              <li>Návrh riešení: konkrétne, realizovateľné, úprimné</li>
+              <li>Doprovod pri realizácii podľa potreby</li>
+              <li>Podpora exekúcie na požiadanie</li>
+            </ol>
+          </div>
+          <div class="en">
+            <ol class="clean">
+              <li>Initial discussion of owner goals</li>
+              <li>Performance, strategy, and risk diagnostics</li>
+              <li>Solution design: specific, actionable, candid</li>
+              <li>Implementation accompaniment as needed</li>
+              <li>Execution support if needed</li>
+            </ol>
+          </div>
+          <p class="sk slogan">Cieľom nie je analýza. Cieľom je pohyb.</p>
+          <p class="en slogan">The goal isn’t analysis. It is movement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="leadership" aria-labelledby="lead-title">
+      <div class="grid two">
+        <div class="card span-all">
+          <h2 id="lead-title">Leadership</h2>
+          <p class="sk">Najväčšia hodnota, ktorú som kedy vytvoril, bola v ľuďoch. V každej firme som cielene rozvíjal
+            talenty, mnohí z nich sa dnes stali lídrami a CEO. Leadership je pre mňa systém, nie štýl. Systém, ktorý
+            funguje.</p>
+          <p class="en">The greatest value I’ve ever created was in people. In every organization, I actively developed
+            internal talent, many are now leaders and CEOs. For me, leadership is not a style. It is a system. And it
+            works.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="ethics" aria-labelledby="ethics-title">
+      <div class="grid two">
+        <div class="card span-all">
+          <h2 id="ethics-title" class="sk">Etika a dôvera</h2>
+          <h2 class="en">Ethics & Trust</h2>
+          <div>
+            <p class="sk">Vstúpiť do priestoru výkonnosti a manažmentu si vyžaduje dôveru, rešpekt a skúsenosť.
+              Pracujem diskrétne, bez politiky, s jasnými hranicami:</p>
+            <p class="en">Entering the space of performance and leadership requires trust, respect, and experience. I
+              work discreetly, free from politics, with clear rules:</p>
+          </div>
+          <div>
+            <ul class="clean sk">
+              <li>dôvernosť</li>
+              <li>transparentnosť voči vlastníkom</li>
+              <li>rešpekt k interným tímom</li>
+            </ul>
+            <ul class="clean en">
+              <li>confidentiality</li>
+              <li>transparency to ownership</li>
+              <li>respect for internal leadership</li>
+            </ul>
+          </div>
+          <p class="sk slogan">„Poradca nemá súdiť - má byť zrkadlom“</p>
+          <p class="en slogan">"An advisor is not meant to judge, they are a mirror"</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="contact" aria-labelledby="contact-title">
+      <div class="grid two">
+        <div class="card span-all contact-card">
+          <div>
+            <h2 id="contact-title" class="contact-headline sk">
+              Zaujala vás moja práca? Neváhajte ma kontaktovať na
+              <a href="mailto:info@intrasight.sk" target="_blank">info@intrasight.sk</a>.<br>
+              Pridajte si ma na <a href="https://www.linkedin.com/in/patrik-vancik-ba62602a/" target="_blank"
+                rel="noopener">LinkedIn</a> a zostaňme v
+              kontakte.
+            </h2>
+            <h2 class="contact-headline en">
+              Interested in my work? Feel free to reach out at
+              <a href="mailto:info@intrasight.sk" target="_blank">info@intrasight.sk</a>.<br>
+              Add me on <a href="https://www.linkedin.com/in/patrik-vancik-ba62602a/" target="_blank"
+                rel="noopener">LinkedIn</a> and let's stay
+              connected.
+            </h2>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="wrap">
+      <div class="grid two">
+        <p class="muted">© <span id="yr"></span> LETRA spol. s r.o.</p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Helpers
+    const root = document.body;
+    const buttons = document.querySelectorAll('.lang-btn');
+    const docLang = () => root.getAttribute('data-lang') || 'sk';
+    document.documentElement.lang = docLang(); // set initial <html lang>
+
+    // Grab header and keep a CSS var in sync with its real height
+    const headerEl = document.querySelector('header');
+    function setHeaderHeight() {
+      if (!headerEl) return;
+      const h = headerEl.offsetHeight;
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+    }
+    window.addEventListener('load', setHeaderHeight);
+    window.addEventListener('resize', setHeaderHeight);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(setHeaderHeight);
+    }
+
+    // Smooth active link state
+    const links = document.querySelectorAll('nav a');
+    const sections = [...document.querySelectorAll('main section')];
+
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const headerH = headerEl ? headerEl.offsetHeight : 0;
+        const y = window.scrollY + headerH + 10; // account for fixed header
+        let current = 'home';
+        for (const sec of sections) {
+          if (sec.offsetTop <= y) current = sec.id || 'home';
+        }
+        links.forEach(a => {
+          const href = a.getAttribute('href');
+          const hash = href && href.startsWith('#') ? href : (a.hash || '');
+          if (hash === '#' + current) {
+            a.setAttribute('aria-current', 'true');
+          } else {
+            a.removeAttribute('aria-current');
+          }
+        });
+        ticking = false;
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+
+    // Language switcher
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lng = btn.getAttribute('data-set-lang');
+        root.setAttribute('data-lang', lng);
+        buttons.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+        document.documentElement.lang = lng === 'sk' ? 'sk' : 'en';
+      });
+    });
+
+    // Footer year
+    const yrElem = document.getElementById('yr');
+    if (yrElem) { yrElem.textContent = new Date().getFullYear(); }
+
+    // Optional smooth scrolling using event delegation (respects reduced motion)
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.addEventListener('click', function (e) {
+      const a = e.target.closest('a[href^="#"]');
+      if (a && a.getAttribute('href').length > 1) {
+        const tgt = document.querySelector(a.getAttribute('href'));
+        if (tgt) {
+          e.preventDefault();
+          tgt.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
+        }
+      }
+    });
+
+    // Run once on load
+    setHeaderHeight();
+    onScroll();
+  </script>
+</body>
+
+</html>
