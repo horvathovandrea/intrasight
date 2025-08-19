@@ -135,17 +135,27 @@
     .slogan-two {
       font-family: var(--font-head);
       font-style: italic;
-      color: var(--accent);
       margin: 4px 0 0;
     }
 
+    @media (max-width: 820px) {
+    .slogan-two {
+        justify-content: center;
+      }
+    }
+
     .slogan {
-      font-size: clamp(16px, 2vw, 20px);
+      font-size: clamp(32px, 10vw, 40px);
+      color: var(--brand);
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
     }
 
     .slogan-two {
       font-size: clamp(28px, 3.8vw, 40px);
       line-height: 1.25;
+      color: var(--accent);
     }
 
     .lead {
@@ -329,14 +339,14 @@
       background: var(--accent);
       color: var(--bg);
       border-radius: 14px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+      padding: 20px 20px;
     }
 
     #contact .contact-card a {
       color: inherit;
       text-decoration: underline;
-      text-decoration-thickness: 3px;
-      text-underline-offset: 3px;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 2px;
     }
 
     #contact .contact-headline {
@@ -351,7 +361,8 @@
 
     /* Logo block in hero */
     .logo-title {
-  line-height: 0;           /* keeps no extra line spacing */
+      line-height: 0;
+      /* keeps no extra line spacing */
     }
 
     .logo-title img {
@@ -402,75 +413,104 @@
       }
     }
 
-/* ===== Mobile menu (burger) — animated ===== */
-.menu-toggle {
-  display: none;
-  border: none; background: none; color: whitesmoke;
-  font-size: 24px; padding: 8px 10px; cursor: pointer;
-}
+    /* ===== Mobile menu (burger) — animated ===== */
+    .menu-toggle {
+      display: none;
+      border: none;
+      background: none;
+      color: whitesmoke;
+      font-size: 24px;
+      padding: 8px 10px;
+      cursor: pointer;
+    }
 
-/* Desktop */
-@media (min-width: 821px) {
-  .mobile-panel { display: flex; align-items: center; gap: 8px; }
-}
+    /* Desktop */
+    @media (min-width: 821px) {
+      .mobile-panel {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
 
-/* Mobile */
-@media (max-width: 820px) {
-  .menu-toggle { display: inline-flex; align-items: center; }
+    /* Mobile */
+    @media (max-width: 820px) {
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+      }
 
-  /* Base panel styles ALWAYS applied on mobile (no display toggle) */
-  .mobile-panel {
-    position: fixed;
-    left: 0; right: 0;
-    top: var(--header-h);
-    max-height: calc(100dvh - var(--header-h));
-    overflow: auto;
-    background: var(--brand);
-    padding: 16px 20px 24px;
-    border: #aa91bc 1px solid;
-    z-index: 60;
+      /* Base panel styles ALWAYS applied on mobile (no display toggle) */
+      .mobile-panel {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: var(--header-h);
+        max-height: calc(100dvh - var(--header-h));
+        overflow: auto;
+        background: var(--brand);
+        padding: 16px 20px 24px;
+        border: #aa91bc 1px solid;
+        z-index: 60;
 
-    /* Hidden state */
-    transform: translateY(-8px);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+        /* Hidden state */
+        transform: translateY(-8px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
 
-    /* Animate transform + fade; visibility delayed to avoid click-through */
-    transition: transform .2s ease, opacity .2s ease, visibility 0s linear .2s;
-  }
+        /* Animate transform + fade; visibility delayed to avoid click-through */
+        transition: transform .2s ease, opacity .2s ease, visibility 0s linear .2s;
+      }
 
-  /* Open state */
-  header.menu-open .mobile-panel {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transition-delay: 0s; /* show immediately when opening */
-  }
+      /* Open state */
+      header.menu-open .mobile-panel {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition-delay: 0s;
+        /* show immediately when opening */
+      }
 
-  /* Stack links vertically & comfy targets */
-  header.menu-open nav ul { flex-direction: column; gap: 8px; }
-  header.menu-open nav a { display: block; padding: 12px 8px; font-size: 18px; }
+      /* Stack links vertically & comfy targets */
+      header.menu-open nav ul {
+        flex-direction: column;
+        gap: 8px;
+      }
 
-  header.menu-open .lang-switch {
-    display: flex; gap: 10px;
-    padding-top: 8px; margin-top: 12px;
-    border-top: 1px solid var(--accent);
-  }
+      header.menu-open nav a {
+        display: block;
+        padding: 12px 8px;
+        font-size: 18px;
+      }
 
-  body.noscroll { overflow: hidden; }
-}
+      header.menu-open .lang-switch {
+        display: flex;
+        gap: 10px;
+        padding-top: 8px;
+        margin-top: 12px;
+        border-top: 1px solid var(--accent);
+      }
 
-/* Respect reduced motion (optional) */
-@media (max-width: 820px) and (prefers-reduced-motion: reduce) {
-  .mobile-panel, header.menu-open .mobile-panel { transition: none; }
-}
+      body.noscroll {
+        overflow: hidden;
+      }
+    }
+
+    /* Respect reduced motion (optional) */
+    @media (max-width: 820px) and (prefers-reduced-motion: reduce) {
+
+      .mobile-panel,
+      header.menu-open .mobile-panel {
+        transition: none;
+      }
+    }
 
     /* ----------------------------------
    DEBUG (uncomment to use)
 ---------------------------------- */
-/*    .wrap {
+    /*    .wrap {
       outline: 2px dashed rgb(255, 0, 0)
     }
 
@@ -502,25 +542,25 @@
       <a href="#top" class="brand" aria-label="Intrasight — Home">
         <img class="logo" src="intrasight-logo-white.svg" alt="Intrasight" height="28">
       </a>
-    <button class="menu-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="Menu">
-      <span aria-hidden="true">☰</span>
-    </button>
-    <div class="mobile-panel">
-    <nav id="site-menu" aria-label="Primary">
-      <ul>
-        <li><a href="#about" class="sk">O mne</a><a href="#about" class="en">About</a></li>
-        <li><a href="#services" class="sk">Služby</a><a href="#services" class="en">Services</a></li>
-        <li><a href="#how" class="sk">Ako pracujem</a><a href="#how" class="en">How I Work</a></li>
-        <li><a href="#leadership" class="sk">Leadership</a><a href="#leadership" class="en">Leadership</a></li>
-        <li><a href="#ethics" class="sk">Etika</a><a href="#ethics" class="en">Ethics</a></li>
-        <li><a href="#contact" class="sk">Kontakt</a><a href="#contact" class="en">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="lang-switch" role="group" aria-label="Language">
-      <button class="lang-btn" data-set-lang="sk" aria-pressed="true">SK</button>
-      <button class="lang-btn" data-set-lang="en" aria-pressed="false">EN</button>
-    </div>
-    </div>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-menu" aria-label="Menu">
+        <span aria-hidden="true">☰</span>
+      </button>
+      <div class="mobile-panel">
+        <nav id="site-menu" aria-label="Primary">
+          <ul>
+            <li><a href="#about" class="sk">O mne</a><a href="#about" class="en">About</a></li>
+            <li><a href="#services" class="sk">Služby</a><a href="#services" class="en">Services</a></li>
+            <li><a href="#how" class="sk">Ako pracujem</a><a href="#how" class="en">How I Work</a></li>
+            <li><a href="#leadership" class="sk">Leadership</a><a href="#leadership" class="en">Leadership</a></li>
+            <li><a href="#ethics" class="sk">Etika</a><a href="#ethics" class="en">Ethics</a></li>
+            <li><a href="#contact" class="sk">Kontakt</a><a href="#contact" class="en">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button class="lang-btn" data-set-lang="sk" aria-pressed="true">SK</button>
+          <button class="lang-btn" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -627,10 +667,10 @@
               <li>Execution support if needed</li>
             </ol>
           </div>
-          <p class="sk slogan">Cieľom nie je analýza. Cieľom je pohyb.</p>
-          <p class="en slogan">The goal isn’t analysis. It is movement.</p>
         </div>
       </div>
+      <p class="sk slogan">„Cieľom nie je analýza. Cieľom je pohyb.“</p>
+      <p class="en slogan">"An analysis is not the goal. The goal is movement."</p>
     </section>
 
     <section class="wrap" id="leadership" aria-labelledby="lead-title">
@@ -645,6 +685,8 @@
             works.</p>
         </div>
       </div>
+      <p class="sk slogan">„Poradca nemá súdiť - má byť zrkadlom“</p>
+      <p class="en slogan">"An advisor is not meant to judge, they are a mirror"</p>
     </section>
 
     <section class="wrap" id="ethics" aria-labelledby="ethics-title">
@@ -670,10 +712,6 @@
               <li>respect for internal leadership</li>
             </ul>
           </div>
-          <p class="sk slogan">„Poradca nemá súdiť - má byť zrkadlom“</p>
-          <p class="en slogan">"An advisor is not meant to judge, they are a mirror"</p>
-        </div>
-      </div>
     </section>
 
     <section class="wrap" id="contact" aria-labelledby="contact-title">
@@ -787,44 +825,44 @@
     setHeaderHeight();
     onScroll();
 
-// Mobile menu toggle
-const header = document.querySelector('header');
-const menuBtn = document.querySelector('.menu-toggle');
-const siteMenu = document.getElementById('site-menu');
+    // Mobile menu toggle
+    const header = document.querySelector('header');
+    const menuBtn = document.querySelector('.menu-toggle');
+    const siteMenu = document.getElementById('site-menu');
 
-function closeMenu() {
-  header.classList.remove('menu-open');
-  document.body.classList.remove('noscroll');
-  if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
-}
+    function closeMenu() {
+      header.classList.remove('menu-open');
+      document.body.classList.remove('noscroll');
+      if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+    }
 
-function openMenu() {
-  header.classList.add('menu-open');
-  document.body.classList.add('noscroll');
-  if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
-}
+    function openMenu() {
+      header.classList.add('menu-open');
+      document.body.classList.add('noscroll');
+      if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+    }
 
-if (menuBtn && siteMenu) {
-  menuBtn.addEventListener('click', () => {
-    const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
-    expanded ? closeMenu() : openMenu();
-  });
+    if (menuBtn && siteMenu) {
+      menuBtn.addEventListener('click', () => {
+        const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        expanded ? closeMenu() : openMenu();
+      });
 
-  // Close on any nav link click (good mobile UX)
-  siteMenu.addEventListener('click', (e) => {
-    const a = e.target.closest('a[href]');
-    if (a) closeMenu();
-  });
+      // Close on any nav link click (good mobile UX)
+      siteMenu.addEventListener('click', (e) => {
+        const a = e.target.closest('a[href]');
+        if (a) closeMenu();
+      });
 
-  // Close on Escape
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMenu();
-  });
+      // Close on Escape
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
 
-  // Close if viewport resized back to desktop
-  const mq = window.matchMedia('(min-width: 821px)');
-  mq.addEventListener?.('change', (evt) => { if (evt.matches) closeMenu(); });
-}
+      // Close if viewport resized back to desktop
+      const mq = window.matchMedia('(min-width: 821px)');
+      mq.addEventListener?.('change', (evt) => { if (evt.matches) closeMenu(); });
+    }
 
   </script>
 </body>
