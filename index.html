@@ -41,7 +41,8 @@
       --text: #000000;
       --brand: #272f6c;
       --accent: #aa91bc;
-      --maxw: 1000px;
+      --muted: #2d4a1b;
+      --maxw: 1100px;
 
       --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
         "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
@@ -188,6 +189,12 @@
       border-radius: 10px;
     }
 
+    .highlight {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
     /* ----------------------------------
    LAYOUT
 ---------------------------------- */
@@ -290,7 +297,7 @@
     /* Grid */
     .grid {
       display: grid;
-      gap: 10px;
+      gap: 20px;
       grid-template-columns: 1fr;
     }
 
@@ -302,6 +309,14 @@
       .grid.two {
         grid-template-columns: 1fr;
       }
+    }
+
+    #services .grid.two {
+      align-items: center;
+    }
+
+    #about .grid.two {
+      align-items: center;
     }
 
     /* Cards */
@@ -316,7 +331,7 @@
 
     .muted,
     .card .muted {
-      color: var(--accent);
+      color: var(--muted);
     }
 
     /* Business cases grid */
@@ -341,7 +356,7 @@
     .case {
       background: var(--bg);
       /* default background */
-      border: 2px solid var(--accent);
+      border: 1px solid var(--muted);
       /* accent border */
       border-radius: 12px;
       padding: 16px;
@@ -389,6 +404,17 @@
     .about-photo img {
       width: min(100%, 300px);
       border-radius: 12px;
+    }
+
+    ul.clean {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul.clean li::before {
+      content: "➔ ";
+      color: var(--muted);
+      font-weight: normal;
     }
 
     /* Contact */
@@ -441,7 +467,6 @@
       grid-column: 1 / -1;
     }
 
-    ul.clean,
     ol.clean {
       margin: 8px 0 0 0;
       padding-inline-start: 18px;
@@ -482,7 +507,7 @@
     }
 
     /* Desktop */
-    @media (min-width: 821px) {
+    @media (min-width: 953px) {
       .mobile-panel {
         display: flex;
         align-items: center;
@@ -491,7 +516,7 @@
     }
 
     /* Mobile */
-    @media (max-width: 820px) {
+    @media (max-width: 952px) {
       .menu-toggle {
         display: inline-flex;
         align-items: center;
@@ -609,8 +634,8 @@
             <li><a href="#services" class="sk">Služby</a><a href="#services" class="en">Services</a></li>
             <li><a href="#how" class="sk">Od prístupu k výsledkom</a><a href="#how" class="en">From Approach to
                 Results</a></li>
-            <li><a href="#leadership" class="sk">Leadership</a><a href="#leadership" class="en">Leadership</a></li>
-            <li><a href="#ethics" class="sk">Etika</a><a href="#ethics" class="en">Ethics</a></li>
+            <li><a href="#principles" class="sk">Líderšip a Etika</a><a href="#leadership" class="en">Leadership &
+                Ethics</a></li>
             <li><a href="#contact" class="sk">Kontakt</a><a href="#contact" class="en">Contact</a></li>
           </ul>
         </nav>
@@ -675,34 +700,38 @@
 
     <section class="wrap" id="services" aria-labelledby="services-title">
       <div class="grid two">
-        <div class="card span-all">
+        <div class="card">
           <h2 id="services-title" class="sk">Služby</h2>
           <h2 class="en">Services</h2>
           <div>
             <ul class="clean sk">
-              <li>Strategická diagnostika</li>
-              <li>Hodnotenie výkonnosti top manažmentu</li>
-              <li>Redizajn a posúdenie obchodného modelu</li>
-              <li>Interim alebo externý strategický leadership</li>
-              <li>Poradenstvo pri predaji, nástupníctve a zmene vlastníctva</li>
+              <li class="lead">Strategická diagnostika</li>
+              <li class="lead">Hodnotenie výkonnosti top manažmentu</li>
+              <li class="lead">Redizajn a posúdenie obchodného modelu</li>
+              <li class="lead">Interim alebo externý strategický Líderšip</li>
+              <li class="lead">Poradenstvo pri predaji, nástupníctve a zmene vlastníctva</li>
             </ul>
           </div>
           <div>
             <ul class="clean en">
-              <li>Strategic diagnostics</li>
-              <li>Executive team performance assessment</li>
-              <li>Business model evaluation and redesign</li>
-              <li>Interim or external strategic leadership</li>
-              <li>Advisory in ownership transition and succession</li>
+              <li class="lead">Strategic diagnostics</li>
+              <li class="lead">Executive team performance assessment</li>
+              <li class="lead">Business model evaluation and redesign</li>
+              <li class="lead">Interim or external strategic leadership</li>
+              <li class="lead">Advisory in ownership transition and succession</li>
             </ul>
           </div>
+        </div>
+        <div class="card">
+          <p class="sk slogan">„Cieľom nie je analýza.<br> Cieľom je pohyb.“</p>
+          <p class="en slogan">"An analysis is not the goal.<br> The goal is movement."</p>
         </div>
       </div>
     </section>
 
     <section class="wrap" id="how" aria-labelledby="how-title">
       <div class="grid two">
-        <div class="card">
+        <div class="card span-all">
           <h2 id="how-title" class="sk">Od prístupu k výsledkom</h2>
           <h2 class="en">From Approach to Results</h2>
           <div class="sk">
@@ -724,17 +753,14 @@
             </ol>
           </div>
         </div>
-        <div class="card">
-          <p class="sk slogan">„Cieľom nie je analýza.<br> Cieľom je pohyb.“</p>
-          <p class="en slogan">"An analysis is not the goal.<br> The goal is movement."</p>
-        </div>
       </div>
     </section>
 
     <section class="wrap" id="business" aria-labelledby="buss-title">
       <div class="grid two">
         <div class="card span-all">
-          <h3 id="buss-title">Business Cases</h3>
+          <h3 id="buss-title" class="sk">Pracovné skúsenosti</h3>
+          <h3 id="buss-title" class="en">Past work experience</h3>
 
           <div class="cases-grid">
             <!-- 1 -->
@@ -854,47 +880,45 @@
       </div>
     </section>
 
-    <section class="wrap" id="leadership" aria-labelledby="lead-title">
+    <section class="wrap" id="principles" aria-labelledby="principles-title">
       <div class="grid two">
+        <!-- Left column: Leadership -->
         <div class="card">
-          <h2 id="lead-title">Leadership</h2>
-          <p class="sk">Najväčšia hodnota, ktorú som kedy vytvoril, bola v ľuďoch. V každej firme som cielene rozvíjal
-            talenty, mnohí z nich sa dnes stali lídrami a CEO. Leadership je pre mňa systém, nie štýl. Systém, ktorý
-            funguje.</p>
-          <p class="en">The greatest value I’ve ever created was in people. In every organization, I actively developed
-            internal talent, many are now leaders and CEOs. For me, leadership is not a style. It is a system. And it
-            works.</p>
+          <h2 class="sk">Líderšip</h2>
+          <h2 class="en">Leadership</h2>
+
+          <p class="sk">
+            Najväčšia hodnota, ktorú som vytvoril, bola v ľuďoch. V každej firme som cieľavedome rozvíjal talenty;
+            mnohí z nich sú dnes lídrami a CEO. Líderšip je pre mňa systém, nie štýl. Systém, ktorý funguje.
+          </p>
+          <p class="en">
+            The greatest value I’ve created has been in people. In every organization I deliberately developed internal
+            talent; many are leaders and CEOs today. For me, leadership is a system—not a style. A system that works.
+          </p>
         </div>
+
+        <!-- Right column: Ethics -->
         <div class="card">
-          <p class="sk slogan">„Poradca nemá súdiť -<br> má byť zrkadlom“</p>
-          <p class="en slogan">"An advisor is not meant to judge -<br> they are a mirror"</p>
+          <h2 class="sk">Etika a dôvera</h2>
+          <h2 class="en">Ethics & Trust</h2>
+
+          <p class="sk">
+            Vstup do priestoru výkonnosti a manažmentu si vyžaduje dôveru, rešpekt a skúsenosť.
+            Pracujem diskrétne, bez politiky, s jasnými pravidlami:
+            <span class="highlight">dôvera</span>,
+            <span class="highlight">transparentnosť voči majiteľom</span>
+            a <span class="highlight">rešpekt k interným tímom</span>.
+          </p>
+
+          <p class="en">
+            Operating in the space of performance and leadership demands trust, respect, and experience.
+            I work discreetly, free from politics, with clear rules:
+            <span class="highlight">confidentiality</span>,
+            <span class="highlight">transparency to ownership</span>
+            and <span class="highlight">respect for internal leadership</span>.
+          </p>
         </div>
       </div>
-    </section>
-
-    <section class="wrap" id="ethics" aria-labelledby="ethics-title">
-      <div class="grid two">
-        <div class="card span-all">
-          <h2 id="ethics-title" class="sk">Etika a dôvera</h2>
-          <h2 class="en">Ethics & Trust</h2>
-          <div>
-            <p class="sk">Vstúpiť do priestoru výkonnosti a manažmentu si vyžaduje dôveru, rešpekt a skúsenosť.
-              Pracujem diskrétne, bez politiky, s jasnými hranicami:</p>
-            <p class="en">Entering the space of performance and leadership requires trust, respect, and experience. I
-              work discreetly, free from politics, with clear rules:</p>
-          </div>
-          <div>
-            <ul class="clean sk">
-              <li>dôvernosť</li>
-              <li>transparentnosť voči vlastníkom</li>
-              <li>rešpekt k interným tímom</li>
-            </ul>
-            <ul class="clean en">
-              <li>confidentiality</li>
-              <li>transparency to ownership</li>
-              <li>respect for internal leadership</li>
-            </ul>
-          </div>
     </section>
 
     <section class="wrap" id="contact" aria-labelledby="contact-title">
