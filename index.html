@@ -130,6 +130,11 @@
       margin: 0 0 14px;
     }
 
+    h3 {
+      font-size: clamp(18px, 9vw, 30px);
+      margin: 0 0 14px;
+    }
+
     /* Shared “serif/italic/accent” pattern */
     .slogan,
     .slogan-two {
@@ -151,6 +156,7 @@
       justify-content: flex-end;
       align-items: flex-start;
       text-align: right;
+      line-height: 1.15;
     }
 
     .slogan-two {
@@ -160,7 +166,7 @@
     }
 
     .lead {
-      font-size: clamp(16px, 2.1vw, 20px);
+      font-size: clamp(18px, 2.1vw, 20px);
     }
 
     strong,
@@ -205,7 +211,7 @@
     .wrap {
       max-width: var(--maxw);
       margin-inline: auto;
-      padding-block: 10px;
+      padding-block: 15px;
     }
 
     @media (max-width: 1030px) {
@@ -320,7 +326,7 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1030px) {
       .cases-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -335,7 +341,7 @@
     .case {
       background: var(--bg);
       /* default background */
-      border: 1px solid var(--accent);
+      border: 2px solid var(--accent);
       /* accent border */
       border-radius: 12px;
       padding: 16px;
@@ -350,6 +356,12 @@
       margin-inline: auto;
       height: auto;
       object-fit: contain;
+    }
+
+    @media (max-width: 1030px) {
+      .case img {
+        max-width: min(35%, 150px);
+      }
     }
 
     .case figcaption {
@@ -595,7 +607,8 @@
           <ul>
             <li><a href="#about" class="sk">O mne</a><a href="#about" class="en">About</a></li>
             <li><a href="#services" class="sk">Služby</a><a href="#services" class="en">Services</a></li>
-            <li><a href="#how" class="sk">Od prístupu k výsledkom</a><a href="#how" class="en">From Approach to Results</a></li>
+            <li><a href="#how" class="sk">Od prístupu k výsledkom</a><a href="#how" class="en">From Approach to
+                Results</a></li>
             <li><a href="#leadership" class="sk">Leadership</a><a href="#leadership" class="en">Leadership</a></li>
             <li><a href="#ethics" class="sk">Etika</a><a href="#ethics" class="en">Ethics</a></li>
             <li><a href="#contact" class="sk">Kontakt</a><a href="#contact" class="en">Contact</a></li>
@@ -654,7 +667,7 @@
         </div>
         <div class="card"><!-- Image (right) -->
           <div class="about-photo">
-            <img src="placeholder.jpg" alt="Portrait of Patrik Vančík" width="300" loading="lazy" decoding="async">
+            <img src="placeholder.png" alt="Portrait of Patrik Vančík" width="300" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -721,119 +734,119 @@
     <section class="wrap" id="business" aria-labelledby="buss-title">
       <div class="grid two">
         <div class="card span-all">
-          <h2 id="buss-title">Business Cases</h2>
+          <h3 id="buss-title">Business Cases</h3>
 
           <div class="cases-grid">
             <!-- 1 -->
             <figure class="case sk">
-              <img src="logos/rigips.svg" alt="Rigips" loading="lazy" decoding="async">
+              <img src="rigips.png" alt="Rigips" loading="lazy" decoding="async">
               <figcaption>
+                <strong>Rigips</strong> 2000–2007,<br> CZ a SK <br><br>
                 Strategický rozvoj, dlhodobo udržateľný rast a maximálna efektivita výrobných a obchodných procesov.
-                <br><br> <strong>Rigips</strong> 2000–2007,<br> CZ a SK
               </figcaption>
             </figure>
 
             <figure class="case en">
-              <img src="logos/rigips.svg" alt="Rigips" loading="lazy" decoding="async">
+              <img src="rigips.png" alt="Rigips" loading="lazy" decoding="async">
               <figcaption>
+                <strong>Rigips</strong> 2000–2007,<br> CZ and SK <br><br>
                 Strategic development, long-term sustainable growth, and maximum efficiency of production and sales
                 processes.
-                <br><br> <strong>Rigips</strong> 2000–2007,<br> CZ and SK
               </figcaption>
             </figure>
 
             <!-- 2 -->
             <figure class="case sk">
-              <img src="logos/mada-gypsum.svg" alt="Mada Gypsum" loading="lazy" decoding="async">
+              <img src="MADA GYPSUM.png" alt="Mada Gypsum" loading="lazy" decoding="async">
               <figcaption>
+                <strong> Mada Gypsum</strong> 2009–2012,<br> Saudská Arábia <br><br>
                 Výrazný rast firmy, trhová penetrácia, akvizícia nových klientov, medzinárodná expanzia a systémové
                 riešenia pre budovanie líderskej pozície v regióne.
-                <br><br> <strong> Mada Gypsum</strong> 2009–2012,<br> Saudská Arábia
               </figcaption>
             </figure>
 
             <figure class="case en">
-              <img src="logos/mada-gypsum.svg" alt="Mada Gypsum" loading="lazy" decoding="async">
+              <img src="MADA GYPSUM.png" alt="Mada Gypsum" loading="lazy" decoding="async">
               <figcaption>
+                <strong> Mada Gypsum</strong> 2009–2012,<br> Saudi Arabia <br><br>
                 Significant company growth, market penetration, acquisition of new clients, international expansion, and
                 systemic solutions for building a leading position in the region.
-                <br><br> <strong> Mada Gypsum</strong> 2009–2012,<br> Saudi Arabia
               </figcaption>
             </figure>
 
             <!-- 3 -->
             <figure class="case sk">
-              <img src="logos/gumotex.svg" alt="Gumotex" loading="lazy" decoding="async">
+              <img src="GUMOTEX.png" alt="Gumotex" loading="lazy" decoding="async">
               <figcaption>
+                <strong>Gumotex</strong> 2012–2014,<br> CZ <br><br>
                 Zmena firemnej kultúry, nová rozvojová stratégia, výrazný rast zisku a obratu, razantné zníženie
                 nákladov, dlhodobé kontrakty (Európa/USA) a systematický rozvoj talentov.
-                <br><br> <strong>Gumotex</strong> 2012–2014,<br> CZ
               </figcaption>
             </figure>
 
             <figure class="case en">
-              <img src="logos/gumotex.svg" alt="Gumotex" loading="lazy" decoding="async">
+              <img src="GUMOTEX.png" alt="Gumotex" loading="lazy" decoding="async">
               <figcaption>
+                <strong>Gumotex</strong> 2012–2014,<br> CZ <br><br>
                 Change of corporate culture, a new development strategy, significant growth in profit and turnover,
                 substantial cost reduction, long-term contracts (Europe/USA), and systematic talent development.
-                <br><br> <strong>Gumotex</strong> 2012–2014,<br> CZ
               </figcaption>
             </figure>
 
             <!-- 4 -->
             <figure class="case sk">
-              <img src="logos/tes.svg" alt="TES" loading="lazy" decoding="async">
+              <img src="TES.png" alt="TES" loading="lazy" decoding="async">
               <figcaption>
+                <strong>TES</strong> 2014,<br> CZ <br><br>
                 Rýchla transformácia z prototypovej na modulárnu výrobu, nový obchodný model a výrazné zníženie
                 viazaného kapitálu prostredníctvom efektívneho cash-flow manažmentu.
-                <br><br> <strong>TES</strong> 2014,<br> CZ
               </figcaption>
             </figure>
 
             <figure class="case en">
-              <img src="logos/tes.svg" alt="TES" loading="lazy" decoding="async">
+              <img src="TES.png" alt="TES" loading="lazy" decoding="async">
               <figcaption>
+                <strong>TES</strong> 2014,<br> CZ <br><br>
                 Rapid transformation from prototype to modular production, a new business model, and significant
                 reduction of tied capital through effective cash-flow management.
-                <br><br> <strong>TES</strong> 2014,<br> CZ
               </figcaption>
             </figure>
 
             <!-- 5 -->
             <figure class="case sk">
-              <img src="logos/ama.svg" alt="AMA" loading="lazy" decoding="async">
+              <img src="AMA.png" alt="AMA" loading="lazy" decoding="async">
               <figcaption>
+                <strong>AMA</strong> 2015–2020,<br> Bahrajn <br><br>
                 Rýchla transformácia z prototypovej na modulárnu výrobu, nový obchodný model a výrazné zníženie
                 viazaného kapitálu prostredníctvom efektívneho cash-flow manažmentu.
-                <br> <br> <strong>AMA</strong> 2015–2020,<br> Bahrajn
               </figcaption>
             </figure>
 
             <figure class="case en">
-              <img src="logos/ama.svg" alt="AMA" loading="lazy" decoding="async">
+              <img src="AMA.png" alt="AMA" loading="lazy" decoding="async">
               <figcaption>
+                <strong>AMA</strong> 2015–2020,<br> Bahrain <br><br>
                 Restructuring, significant improvement in production and sales efficiency, investment development,
                 support of young talents, and a strong strategic plan implemented in a very short time.
-                <br><br> <strong>AMA</strong> 2015–2020,<br> Bahrain
               </figcaption>
             </figure>
 
             <!-- 6 -->
             <figure class="case sk">
-              <img src="logos/hirsch.svg" alt="Hirsch" loading="lazy" decoding="async">
+              <img src="Hirsch.png" alt="Hirsch" loading="lazy" decoding="async">
               <figcaption>
+                <strong>Hirsch</strong> 2023,<br> AT/CZ/PL <br><br>
                 Rozvoj zákazníckych služieb, riadenie obchodných aktivít, tvorba nových produktových segmentov a
                 akvizície spoločností.
-                <br><br> <strong>Hirsch</strong> 2023,<br> AT/CZ/PL
               </figcaption>
             </figure>
 
             <figure class="case en">
-              <img src="logos/hirsch.svg" alt="Hirsch" loading="lazy" decoding="async">
+              <img src="Hirsch.png" alt="Hirsch" loading="lazy" decoding="async">
               <figcaption>
+                <strong>Hirsch</strong> 2023,<br> AT/CZ/PL <br><br>
                 Development of customer services, management of business activities, creation of new product segments,
                 and company acquisitions.
-                <br><br> <strong>Hirsch</strong> 2023,<br> AT/CZ/PL
               </figcaption>
             </figure>
           </div>
@@ -843,7 +856,7 @@
 
     <section class="wrap" id="leadership" aria-labelledby="lead-title">
       <div class="grid two">
-        <div class="card span-all">
+        <div class="card">
           <h2 id="lead-title">Leadership</h2>
           <p class="sk">Najväčšia hodnota, ktorú som kedy vytvoril, bola v ľuďoch. V každej firme som cielene rozvíjal
             talenty, mnohí z nich sa dnes stali lídrami a CEO. Leadership je pre mňa systém, nie štýl. Systém, ktorý
@@ -852,9 +865,11 @@
             internal talent, many are now leaders and CEOs. For me, leadership is not a style. It is a system. And it
             works.</p>
         </div>
+        <div class="card">
+          <p class="sk slogan">„Poradca nemá súdiť -<br> má byť zrkadlom“</p>
+          <p class="en slogan">"An advisor is not meant to judge -<br> they are a mirror"</p>
+        </div>
       </div>
-      <p class="sk slogan">„Poradca nemá súdiť - má byť zrkadlom“</p>
-      <p class="en slogan">"An advisor is not meant to judge, they are a mirror"</p>
     </section>
 
     <section class="wrap" id="ethics" aria-labelledby="ethics-title">
